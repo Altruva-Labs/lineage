@@ -5,7 +5,6 @@ This module implements linear regression using two approaches:
 1. Normal Equation (closed-form solution)
 2. Gradient Descent (iterative solution)
 
-Author: Educational Implementation of the Lineage Project
 """
 
 import numpy as np
