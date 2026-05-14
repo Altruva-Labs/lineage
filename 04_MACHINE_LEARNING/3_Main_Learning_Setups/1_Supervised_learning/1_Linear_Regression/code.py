@@ -26,20 +26,51 @@ from sklearn.preprocessing import StandardScaler
 # dataset
 from sklearn.datasets import fetch_california_housing
 
-
-# load dataset
+# load datset
 df = fetch_california_housing()
 
-# view dataset
-# df
+
+# check dataset
+df
 # print(df.data)
-# print(df.describe)
+# print(df.feature_names)
+# print(df.target_names)
 
-# check missing data
-df.isnull().sum()
-df.isnull().sum().sum()
+# split and convert data to a pd dataframe
+X = pd.DataFrame(df.data, columns=df.feature_names)
+y = pd.Series(df.target, name="MedHouseVal")
 
-# check duplicates
-df.duplicate().sum()
+# check X and y
+print(X.info())
+print(y.info())
 
-# check dataframe columns
+# print(X.shape)
+# print(y.shape)
+
+# check data
+
+## info
+print("INFO:")
+print(X.info())
+
+## null values
+print("\nNULL Values:")
+print(X.isnull().sum())
+print(X.isnull().sum().sum())
+
+
+## duplicates
+print("\nDUPLICATE Values:")
+print(X.duplicated().sum().sum())
+print(X.duplicated().sum())
+
+## columns
+print("Columns:")
+print(X.columns)
+
+# Split data into tran and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state=42)
+
+print(f"Train size: {X_train.shape[0]}, Test size: {X_test.shape[0]}")
+
+
